@@ -1,0 +1,292 @@
+
+														 Ч. 1
+														 
+Добавляем в . gitignore /.idea
+		
+G:\laragon\www\laravel>composer require --dev barryvdh/laravel-ide-helper
+
+Using version ^2.6 for barryvdh/laravel-ide-helper
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Nothing to install or update
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+Discovered Package: barryvdh/laravel-ide-helper
+Discovered Package: facade/ignition
+Discovered Package: fideloper/proxy
+Discovered Package: laravel/tinker
+Discovered Package: nesbot/carbon
+Discovered Package: nunomaduro/collision
+Package manifest generated successfully.
+
+php artisan ide-helper:generate
+
+A new helper file was written to _ide_helper.php
+
+
+G:\laragon\www\laravel>php artisan ide-helper:meta
+
+A new meta file was written to .phpstorm.meta.php
+
+
+
+G:\laragon\www\laravel>php artisan ide-helper:models
+
+ Do you want to overwrite the existing model files? Choose no to write to _ide_helper_models.php instead (yes/no) [no]:
+ >
+
+Model information was written to _ide_helper_models.php
+
+
+"scripts": {															УДАЛИЛ - не получается
+        "ide": [
+            "php artisan ide-helper:generate",
+            "php artisan ide-ide-helper:meta",
+            "php artisan ide-ide-ide-helper:models"
+			
+
+
+Чтобы  включить генерацию подсказок для Fluent methods, необходимо в настройках хелпера указать параметр 'include_fluent' => true для этого нужно
+вынести конфигурацию компонента хелпера в отдельный файл конфигураций командой:php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
+
+Которая создаст файл конфигурации /config/ide-helper.php
+
+
+Также, для удобства отладки стоит подключить пакет отображения отладочной информации:
+
+composer require barryvdh/laravel-debugbar --dev
+
+G:\laragon\www\laravel>composer require barryvdh/laravel-debugbar --dev
+Using version ^3.2 for barryvdh/laravel-debugbar
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 2 installs, 0 updates, 0 removals
+  - Installing maximebf/debugbar (v1.15.1): Downloading (100%)
+  - Installing barryvdh/laravel-debugbar (v3.2.8): Downloading (100%)
+maximebf/debugbar suggests installing kriswallsmith/assetic (The best way to manage assets)
+maximebf/debugbar suggests installing predis/predis (Redis storage)
+Writing lock file
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+Discovered Package: barryvdh/laravel-debugbar
+Discovered Package: barryvdh/laravel-ide-helper
+Discovered Package: facade/ignition
+Discovered Package: fideloper/proxy
+Discovered Package: laravel/tinker
+Discovered Package: nesbot/carbon
+Discovered Package: nunomaduro/collision
+Package manifest generated successfully.
+
+
+
+
+G:\laragon\www\laravel>composer install
+
+Loading composer repositories with package information
+Installing dependencies (including require-dev) from lock file
+Nothing to install or update
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+Discovered Package: barryvdh/laravel-ide-helper
+Discovered Package: facade/ignition
+Discovered Package: fideloper/proxy
+Discovered Package: laravel/tinker
+Discovered Package: nesbot/carbon
+Discovered Package: nunomaduro/collision
+Package manifest generated successfully.
+			
+			
+			
+git init
+Reinitialized existing Git repository in G:/laragon/www/laravel/.git/
+
+G:\laragon\www\laravel>git status
+Refresh index: 100% (87/87), done.
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   composer.json
+        modified:   composer.lock
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .phpstorm.meta.php
+        _ide_helper.php
+        _ide_helper_models.php
+        config/ide-helper.php
+        package-lock.json
+        php
+
+no changes added to commit (use "git add" and/or "git commit -a")
+изменения не добавлены в коммит (используйте «git add» и / или «git commit -a»)
+
+
+G:\laragon\www\laravel>git add .
+
+warning: LF will be replaced by CRLF in composer.json.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in composer.lock.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .phpstorm.meta.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in _ide_helper.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in _ide_helper_models.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in config/ide-helper.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in package-lock.json.
+The file will have its original line endings in your working directory
+
+
+G:\laragon\www\laravel>git commit -m "itial commit"
+[master 8830ccb] itial commit
+ Committer: Владимир В. Бориков <V.Borikov@kh.zno.ua>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 8 files changed, 30288 insertions(+), 250 deletions(-)
+ create mode 100644 .phpstorm.meta.php
+ create mode 100644 _ide_helper.php
+ create mode 100644 _ide_helper_models.php
+ create mode 100644 config/ide-helper.php
+ create mode 100644 package-lock.json
+ create mode 100644 php
+
+
+											12:55
+											
+											
+											
+											
+											
+											
+														Ч. 2
+											 
+											 
+00:44	G:\laragon\www\laravel>php artisan make:controller MainController
+
+		Controller created successfully.
+
+										
+											1:35
+										
+Route::get('/', 'MainController@index');
+
+										02:49	
+Route::get('/', 'MainController@index');
+Route::get('/categories', 'MainController@index');
+Route::get('/mobiles/iphone_x_64', 'MainController@index');
+
+
+										03:11
+
+public function index ()
+    {
+        return view('index');
+    }
+    /*                        Ч. 2        03:11
+    public function categories ()
+    {
+        return view('categories');
+    }
+
+    public function product ()
+    {
+        return view('product');
+		
+    }
+			
+
+
+										03:56
+
+Route::get('/mobiles/{poduct}', 'MainController@product');
+
+
+
+										04:03
+										
+										
+public function product ($product)
+/*    public function product ()*/
+    {
+/*        dump($product);*/
+/*        dd($product);*/
+        dd(request());					05:04				Illuminate\Http\Request {#51 ▼
+															  #json: null
+															  #convertedFiles: null
+															  #userResolver: Closure($guard = null) {#306 ▶}
+															  #routeResolver: Closure() {#316 ▶}
+															  +attributes: Symfony\Component\HttpFoundation\ParameterBag {#53 ▶}
+															  +request: Symfony\Component\HttpFoundation\ParameterBag {#59 ▶}
+															  +query: Symfony\Component\HttpFoundation\ParameterBag {#59 ▶}
+															  +server: Symfony\Component\HttpFoundation\ServerBag {#55 ▶}
+															  +files: Symfony\Component\HttpFoundation\FileBag {#56 ▶}
+															  +cookies: Symfony\Component\HttpFoundation\ParameterBag {#54 ▶}
+															  +headers: Symfony\Component\HttpFoundation\HeaderBag {#57 ▶}
+															  #content: null
+															  #languages: null
+															  #charsets: null
+															  #encodings: null
+															  #acceptableContentTypes: null
+															  #pathInfo: "/mobiles/iphone_x_64"
+															  #requestUri: "/mobiles/iphone_x_64"
+															  #baseUrl: ""
+															  #basePath: null
+															  #method: "GET"
+															  #format: null
+															  #session: Illuminate\Session\Store {#344 ▶}
+															  #locale: null
+															  #defaultLocale: "en"
+															  -preferredFormat: null
+															  -isHostValid: true
+															  -isForwardedValid: true
+															  basePath: ""
+															  format: "html"
+															}
+
+										05:45
+/*        Переменную product можно передать несколькими спосабами
+                            1-й
+*/
+										
+
+        return view('product', ['product'=>$product]); 
+		
+		
+											
+										06:14
+	
+		div class="starter-template">
+			<h1>iPhone X 64GB</h1>
+			 {{--   2  06:14    --}}
+			<h2>{{ $product }}</h2>
+			<p>Цена: <b>71990 руб.</b></p>
+			
+			
+
+										9:14
+{{--
+            <a href="http://laravel-diplom-1.rdavydov.ru/portable">
+            заменяем абсолютные ссылки на относительные                     2   9:14
+--}}
+            <a href="/portable">
+                <img src="http://laravel-diplom-1.rdavydov.ru/storage/categories/portable.jpg">
+                <h2>Портативная техника</h2>
+
+
